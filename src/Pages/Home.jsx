@@ -1,10 +1,10 @@
 import { IconArrowRight } from "../Components/Icons/IconArrowRight";
 import PizzaImage from '../assets/Images/pizza2.png';
 import CookingImage from '../assets/Images/cooking1.png';
-import PatchCheck from "../Components/Icons/PatchCheck";
+// import IconPatchCheck from "../Components/Icons/IconPatchCheck";
 import OrderFood from '../assets/Images/pickup.png';
 import Enjoy from '../assets/Images/enjoy.png';
-import Layout from "../Layouts/Layout"
+import Layout from "../Layouts/Layout";
 function Home(){
     return(
         <Layout>
@@ -46,7 +46,7 @@ function Home(){
                 {/* Service Section */}
                 <section
                     className="py-4 mt-6 bg-gradient-to-r from-amber-50 to-orange-300"
-
+                    
                 >
                     <div className="container flex flex-col md:flex-row">
                         <div className = "flex flex-col items-center justify-center rounded-lg lg:w-1/2">
@@ -71,25 +71,25 @@ function Home(){
                             <div className="w-full p-1">
                                 <div className="flex items-center h-full p-2 text-2xl rounded">
 
-                                <PatchCheck className="text-[#F38339] w-10 h-10 mr-4"/>
+                                {/* <IconPatchCheck className="text-[#F38339] w-10 h-10 mr-4" /> */}
                                 <span className="font-bold title-font">Perfect taste</span>
                                 </div>
                             </div>
                             <div className="w-full p-1">
                                 <div className="flex items-center h-full p-2 text-2xl rounded">
 
-                                <PatchCheck className="text-[#F38339] w-10 h-10 mr-4"/>
+                                {/* <IconPatchCheck className="text-[#F38339] w-10 h-10 mr-4" /> */}
                                 <span className="font-bold title-font">Prepared quickly</span>
                                 </div>
                             </div>
                             <div className="w-full p-1">
                                 <div className="flex items-center h-full p-2 text-2xl rounded">
 
-                                <PatchCheck className="text-[#F38339] w-10 h-10 mr-4"/>
+                                {/* <IconPatchCheck className="text-[#F38339] w-10 h-10 mr-4" /> */}
                                 <span className="font-bold title-font">Food hygine guranteed</span>
                                 </div>
                             </div>
-                            {/* <div className="px-5 py-4 mx-auto">
+                             {/* <div className="px-5 py-4 mx-auto">
                                 <div className="flex justify-center py-4">
                                     <div className="inline-flex w-16 h-1 bg-yellow-500 rounded-full"></div>
                                 </div>
@@ -143,7 +143,7 @@ function Home(){
                                         </div>
                                     </div>
                                 </div>
-                            </div> */}
+                            </div>  */}
                             <div className="px-5 py-4 mx-auto">
 
                                 <div className="flex justify-center py-4">
@@ -200,9 +200,8 @@ function Home(){
                 </section>
             </div>
         </Layout>
-    )
+    );
 }
-
 export default Home;
 //component function return jsx 
 // large screen md

@@ -1,21 +1,54 @@
+import { useState } from "react";
+import { toast } from 'react-hot-toast';
+import SignUpPresentation from "./SignupPresentation";
+// container for the Signup page
 function Signup(){
-    return(
-        <>
-            <section className="text-gray-600 body-font">
-                <div className="flex flex-wrap items-center h-screen px-10 py-6 mx-auto">
-                    
-                    <form className="flex flex-col w-full p-8 mt-10 bg-gray-100 rounded-lg lg:w-2/6 md:w-1/2 md:ml-auto md:mt-0">
-                        {/* <h2 clasName="mb-5 textlg font-medium text-gray-900 title-font"> Sign up</h2> */}
- 
-                        <div className="relative mb-4">
-                            <label htmlFor="firstName" className="text-sm leading-7 text-gray-600">First Name</label>
-                            <input type="text" id="firstName" name="firstName" className="w-full px-3 py-1 mt-2 text-base leading-8 transition-colors duration-200 ease-in-out border border-gray-300 rounded outline-noe focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200"/>
-                        </div>
-                    </form>
-                </div>
-            </section>
-        </>
+
+    const [signUpState, setSignUpState] = useState({
+        firstName: '',
+        email: '',
+        mobileNumber: '',
+        password: ''
+    });
+    function handleUserInput(e){
+        const {name, value} = e.target;
+        setSignUpState({
+            ...signUpState,
+        [name]: value
+        })
+    }
+
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        console.log(signUpState);
+
+        //Add validations for the form input
+        if(!signUpState.email || !signUpState.mobileNumber || !signUpState.password || !signUpState.firstName){
+            toast.error("Missing values from the form")
+            return;
+        }
+
+        if(signUpState.firstName.length < 5 || signUpState.firstName.length > 20){
+            toast.error("First name should be atleast 5 character long and maximum 20 characters long");
+            return;
+        }
+
+        //check email
+        if(!signUpState.email.includes('@') || !signUpState.email.include('.')){
+            toast.error("Invalid email address")
+            return;
+        }
+        //check mobile number length to be between 10-12
+        if(signUpState.mobileNumber.length < 10 || !signUpState.email.includes('.')){
+            toast.error("Mobile number should be between 10- 12 characters")
+            return;
+        }
+    }
+    return (
+        <SignUpPresentation 
+        handleFormSubmit={handleFormSubmit} 
+        handleUserInput={handleUserInput} 
+        />
     )
 }
-
 export default Signup;
