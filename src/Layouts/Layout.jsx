@@ -2,7 +2,7 @@
 import Pizzalogo from '../assets/Images/pizza1.png'
 import Footer from '../Components/Footer'
 
-function Layout({ children }) {
+function Layout({ children }) { // fix the error to visual studio using quick fix click the option Disable react/prop-types for this entire file
     return(
         <div>
             <nav className="flex items-center justify-around h-16 text-[#687280] font-mono border-none shadow-md">

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Login() {
     return(
         <>
-                    <section className="text-gray-600 body-font">
+            <section className="text-gray-600 body-font">
                 <div className="flex flex-wrap items-center h-screen px-10 py-6 mx-auto">
                     <div className="hidden pr-0 lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 md:block">
                     <svg
@@ -143,7 +143,7 @@ function Login() {
                     </svg>
                     </div>
                     <form className="flex flex-col w-full p-8 mt-10 bg-gray-100 rounded-lg lg:w-2/6 md:w-1/2 md:ml-auto md:mt-0">
-                        <h2 className="mb-5 text-lg font-medium text-gray-900 title-font"> Sign up</h2>
+                        <h2 className="mb-5 text-lg font-medium text-gray-900 title-font"> Sign In</h2>
  
 
                         <div className="relative mb-4">
