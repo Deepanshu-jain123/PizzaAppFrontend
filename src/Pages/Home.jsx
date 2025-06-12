@@ -1,15 +1,26 @@
 import { IconArrowRight } from "../Components/Icons/IconArrowRight";
 import PizzaImage from '../assets/Images/pizza2.png';
 import CookingImage from '../assets/Images/cooking1.png';
-// import IconPatchCheck from "../Components/Icons/IconPatchCheck";
+import IconPatchCheck from "../Components/Icons/IconPatchCheck";
 import OrderFood from '../assets/Images/pickup.png';
-// import Pickup from '../assets/Images/pickup.png';
+import Pickup from '../assets/Images/pickup.png';
 import Enjoy from '../assets/Images/enjoy.png';
 import Layout from "../Layouts/Layout";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllProducts } from "../Redux/Slices/ProductSlices";
+import { Link } from "react-router-dom";
 function Home(){
 
-
-    console.log(import.meta.env)
+    const dispatch = useDispatch();
+    
+    const { productsData } = useSelector((state) => state.product);
+    console.log(productsData)
+    // console.log(import.meta.env.VITE_BACKEND_URL)
+    useEffect(() => {
+        //This will be called when the component mounts
+        dispatch(getAllProducts())
+    }, []);
     return(
         <Layout>
             <div>
@@ -75,21 +86,21 @@ function Home(){
                             <div className="w-full p-1">
                                 <div className="flex items-center h-full p-2 text-2xl rounded">
 
-                                {/* <IconPatchCheck className="text-[#F38339] w-10 h-10 mr-4" /> */}
+                                <IconPatchCheck className="text-[#F38339] w-10 h-10 mr-4" />
                                 <span className="font-bold title-font">Perfect taste</span>
                                 </div>
                             </div>
                             <div className="w-full p-1">
                                 <div className="flex items-center h-full p-2 text-2xl rounded">
 
-                                {/* <IconPatchCheck className="text-[#F38339] w-10 h-10 mr-4" /> */}
+                                <IconPatchCheck className="text-[#F38339] w-10 h-10 mr-4" />
                                 <span className="font-bold title-font">Prepared quickly</span>
                                 </div>
                             </div>
                             <div className="w-full p-1">
                                 <div className="flex items-center h-full p-2 text-2xl rounded">
 
-                                {/* <IconPatchCheck className="text-[#F38339] w-10 h-10 mr-4" /> */}
+                                <IconPatchCheck className="text-[#F38339] w-10 h-10 mr-4" />
                                 <span className="font-bold title-font">Food hygine guranteed</span>
                                 </div>
                             </div>
@@ -173,7 +184,7 @@ function Home(){
                                     </div>
                                     <div className="flex flex-col items-center text-center p-4 md:w-1/3">
                                         <div className="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 mb-5 bg-yellow-100 rounded-full">
-                                            <img src={OrderFood} />
+                                            <img src={Pickup} />
                                         </div>
                                         <div className="flex-grow">
                                             <h2 className="mb-3 text-lg font-bold text-gray-900 title-font">
@@ -202,6 +213,42 @@ function Home(){
                         </div>
                     </div>
                 </section>
+
+                <div className="mx-auto">
+                    <div className="flex flex-wrap justify-center">
+                        {productsData.map((item) =>{
+                            return(
+                                item.inStock && (
+                                    <div className="p-4 md:w-1/3" key={item._id}>
+                                        <Link to={`/product/${item._id}`}>
+                                            <div className = "overflow-hidden border rounded-lg border-opacity-60">
+                                                <img
+                                                    src={item.productImage}
+                                                    alt = "Pizza Image"
+                                                    className= "object-cover object-center w-full lg:h-48 md:h-36"
+                                                />
+                                                <div className="p-6 border">
+                                                    <h2 className="text-xs font-medium tracking-widest text-gray-400 title-font">
+                                                        {item.category}
+                                                    </h2>
+                                                    <h1>
+                                                        {item.productName}
+                                                    </h1>
+                                                    <p className="mb-4 text-base leading-relaxed">
+                                                        {item.desciption}
+                                                    </p>
+                                                    <p className ="text-lg font-medium text-gray-900 title-font">
+                                                        ${item.price}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                )
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
         </Layout>
     );
